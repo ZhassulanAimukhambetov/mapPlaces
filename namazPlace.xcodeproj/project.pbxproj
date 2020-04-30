@@ -3,27 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A08B9FAB81B8DC6EC8F2EB4 /* Pods_namazPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D11F00962EC23EE27136D1 /* Pods_namazPlace.framework */; };
+		D1A72703245AD38F00BDEA19 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A72702245AD38F00BDEA19 /* MapView.swift */; };
+		D1B4B329245B0E5D009252FA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4B328245B0E5D009252FA /* Place.swift */; };
+		D1B4B32C245B1637009252FA /* YandexGeocoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */; };
 		D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC49D245A89E10090DF58 /* AppDelegate.swift */; };
-		D1EDC4A0245A89E10090DF58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC49F245A89E10090DF58 /* SceneDelegate.swift */; };
-		D1EDC4A2245A89E10090DF58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC4A1245A89E10090DF58 /* ViewController.swift */; };
 		D1EDC4A5245A89E10090DF58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A3245A89E10090DF58 /* Main.storyboard */; };
 		D1EDC4A7245A89E20090DF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A6245A89E20090DF58 /* Assets.xcassets */; };
 		D1EDC4AA245A89E20090DF58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A8245A89E20090DF58 /* LaunchScreen.storyboard */; };
+		D1EDC4B4245A8C770090DF58 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC4B3245A8C770090DF58 /* MapVC.swift */; };
+		D1EDC4B6245A8F690090DF58 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC4B5245A8F690090DF58 /* PlaceView.swift */; };
+		D1EDC4B8245A96A70090DF58 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC4B7245A96A70090DF58 /* Extension+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45D2D3C28EB0B42ACFF81A52 /* Pods-namazPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-namazPlace.release.xcconfig"; path = "Target Support Files/Pods-namazPlace/Pods-namazPlace.release.xcconfig"; sourceTree = "<group>"; };
+		B575FC15FEBF75B40F2EAF0E /* Pods-namazPlace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-namazPlace.debug.xcconfig"; path = "Target Support Files/Pods-namazPlace/Pods-namazPlace.debug.xcconfig"; sourceTree = "<group>"; };
+		C1D11F00962EC23EE27136D1 /* Pods_namazPlace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_namazPlace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1A72702245AD38F00BDEA19 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D1B4B328245B0E5D009252FA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexGeocoderService.swift; sourceTree = "<group>"; };
 		D1EDC49A245A89E10090DF58 /* namazPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = namazPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EDC49D245A89E10090DF58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1EDC49F245A89E10090DF58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D1EDC4A1245A89E10090DF58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1EDC4A4245A89E10090DF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1EDC4A6245A89E20090DF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1EDC4A9245A89E20090DF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1EDC4AB245A89E20090DF58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1EDC4B3245A8C770090DF58 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		D1EDC4B5245A8F690090DF58 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
+		D1EDC4B7245A96A70090DF58 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,97 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A08B9FAB81B8DC6EC8F2EB4 /* Pods_namazPlace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E9609B0C10B6F94F45AD82C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1D11F00962EC23EE27136D1 /* Pods_namazPlace.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8055C258288E55220A14BE08 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B575FC15FEBF75B40F2EAF0E /* Pods-namazPlace.debug.xcconfig */,
+				45D2D3C28EB0B42ACFF81A52 /* Pods-namazPlace.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D1A726FB245AD2F200BDEA19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDC4B5245A8F690090DF58 /* PlaceView.swift */,
+				D1A72702245AD38F00BDEA19 /* MapView.swift */,
+				D1EDC4A3245A89E10090DF58 /* Main.storyboard */,
+				D1EDC4A8245A89E20090DF58 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D1A726FC245AD2FB00BDEA19 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDC4B3245A8C770090DF58 /* MapVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D1A726FD245AD30B00BDEA19 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDC4B7245A96A70090DF58 /* Extension+UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D1A726FE245AD31600BDEA19 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDC49D245A89E10090DF58 /* AppDelegate.swift */,
+				D1EDC4AB245A89E20090DF58 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D1A726FF245AD32700BDEA19 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDC4A6245A89E20090DF58 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		D1B4B327245B0E4C009252FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D1B4B328245B0E5D009252FA /* Place.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1B4B32A245B1619009252FA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D1EDC491245A89E10090DF58 = {
 			isa = PBXGroup;
 			children = (
 				D1EDC49C245A89E10090DF58 /* namazPlace */,
 				D1EDC49B245A89E10090DF58 /* Products */,
+				8055C258288E55220A14BE08 /* Pods */,
+				6E9609B0C10B6F94F45AD82C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +148,13 @@
 		D1EDC49C245A89E10090DF58 /* namazPlace */ = {
 			isa = PBXGroup;
 			children = (
-				D1EDC49D245A89E10090DF58 /* AppDelegate.swift */,
-				D1EDC49F245A89E10090DF58 /* SceneDelegate.swift */,
-				D1EDC4A1245A89E10090DF58 /* ViewController.swift */,
-				D1EDC4A3245A89E10090DF58 /* Main.storyboard */,
-				D1EDC4A6245A89E20090DF58 /* Assets.xcassets */,
-				D1EDC4A8245A89E20090DF58 /* LaunchScreen.storyboard */,
-				D1EDC4AB245A89E20090DF58 /* Info.plist */,
+				D1B4B32A245B1619009252FA /* Services */,
+				D1B4B327245B0E4C009252FA /* Models */,
+				D1A726FF245AD32700BDEA19 /* Resourses */,
+				D1A726FE245AD31600BDEA19 /* Application */,
+				D1A726FD245AD30B00BDEA19 /* Extensions */,
+				D1A726FC245AD2FB00BDEA19 /* Controllers */,
+				D1A726FB245AD2F200BDEA19 /* Views */,
 			);
 			path = namazPlace;
 			sourceTree = "<group>";
@@ -74,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1EDC4AE245A89E20090DF58 /* Build configuration list for PBXNativeTarget "namazPlace" */;
 			buildPhases = (
+				EC359EB165E681B7C81F33DD /* [CP] Check Pods Manifest.lock */,
 				D1EDC496245A89E10090DF58 /* Sources */,
 				D1EDC497245A89E10090DF58 /* Frameworks */,
 				D1EDC498245A89E10090DF58 /* Resources */,
+				B3810D89E4AD8B6A4C47FE39 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,14 +227,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B3810D89E4AD8B6A4C47FE39 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC359EB165E681B7C81F33DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-namazPlace-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D1EDC496245A89E10090DF58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1EDC4A2245A89E10090DF58 /* ViewController.swift in Sources */,
 				D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */,
-				D1EDC4A0245A89E10090DF58 /* SceneDelegate.swift in Sources */,
+				D1EDC4B4245A8C770090DF58 /* MapVC.swift in Sources */,
+				D1A72703245AD38F00BDEA19 /* MapView.swift in Sources */,
+				D1B4B329245B0E5D009252FA /* Place.swift in Sources */,
+				D1EDC4B8245A96A70090DF58 /* Extension+UIView.swift in Sources */,
+				D1EDC4B6245A8F690090DF58 /* PlaceView.swift in Sources */,
+				D1B4B32C245B1637009252FA /* YandexGeocoderService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +422,13 @@
 		};
 		D1EDC4AF245A89E20090DF58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B575FC15FEBF75B40F2EAF0E /* Pods-namazPlace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YPDU2X4R25;
-				INFOPLIST_FILE = namazPlace/Info.plist;
+				INFOPLIST_FILE = namazPlace/Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,17 +436,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Zhassulan-Aimukhambetov.namazPlace";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D1EDC4B0245A89E20090DF58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45D2D3C28EB0B42ACFF81A52 /* Pods-namazPlace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YPDU2X4R25;
-				INFOPLIST_FILE = namazPlace/Info.plist;
+				INFOPLIST_FILE = namazPlace/Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Zhassulan-Aimukhambetov.namazPlace";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
