@@ -10,20 +10,24 @@ import UIKit
 import YandexMapKit
 import YandexMapKitSearch
 
+protocol MapViewDelegate: AnyObject {
+    func showPlaceView(with place: Place?)
+    func closePlaceView()
+    func setPlaceName(name: String?)
+}
+
 class MapView: YMKMapView {
     
     let POINT_ASTANA = YMKPoint(latitude: 51.15132203497844, longitude: 71.43448346808336)
-    
-    var isAddMode = false
-    var currentPoint: YMKPoint!
-    var placeView: PlaceView!
     var map: YMKMap {
         return self.mapWindow.map
     }
-    
-    var onPlaceTap: (() -> Void)!
-    var onClose: (() -> Void)!
-    
+    weak var delegate: MapViewDelegate?
+    var place: Place?
+    var mapObject: YMKMapObject?
+    var isAddAddressMode = false
+    var isAddPlaceMode = false
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         loadMap()
@@ -31,52 +35,63 @@ class MapView: YMKMapView {
         map.addCameraListener(with: self)
     }
     
-    private func loadMap() {
-        let cameraPosition = YMKCameraPosition(target: POINT_ASTANA, zoom: 12, azimuth: 0, tilt: 0)
-        map.isNightModeEnabled = true
-        map.isZoomGesturesEnabled = true
-        map.move(with: cameraPosition, animationType: YMKAnimation(type: .smooth, duration: 1.2), cameraCallback: nil)
+    func addPlaceMarks(places: [Place]) {
+        places.forEach { (place) in
+            let point = YMKPoint(latitude: place.latitude, longitude: place.longitude)
+            let placeMark = map.mapObjects.addPlacemark(with: point)
+            placeMark.setIconWith(UIImage(named: "mosque")!)
+            placeMark.userData = place
+        }
     }
     
-    func addPlaceMark(point: YMKPoint) {
+    func addPlaceMark(place: Place) {
+        let point = YMKPoint(latitude: place.latitude, longitude: place.longitude)
         let placeMark = map.mapObjects.addPlacemark(with: point)
-        placeMark.addTapListener(with: self)
         placeMark.setIconWith(UIImage(named: "mosque")!)
+        placeMark.userData = place
+        placeMark.addTapListener(with: self)
     }
     
+    func removePlaceMark() {
+        guard let mapObject = mapObject else { return }
+        map.mapObjects.remove(with: mapObject)
+    }
+    
+    private func loadMap() {
+        map.isNightModeEnabled = true
+        map.show(point: POINT_ASTANA, zoom: 12, animationDuration: 1.2)
+    }
 }
-
+//MARK: - YMKMapKit Listeners
 extension MapView: YMKMapInputListener {
     func onMapTap(with map: YMKMap, point: YMKPoint) {
-        if isAddMode {
-            map.move(with: YMKCameraPosition(target: point, zoom: map.cameraPosition.zoom, azimuth: 0, tilt: 0), animationType: YMKAnimation(type: .smooth, duration: 0.3), cameraCallback: nil)
+        if isAddAddressMode {
+            let currentZoom = map.cameraPosition.zoom
+            map.show(point: point, zoom: currentZoom, animationDuration: 0.3)
+        }
+        if isAddPlaceMode && !isAddAddressMode {
+            delegate?.closePlaceView()
         }
     }
     
     func onMapLongTap(with map: YMKMap, point: YMKPoint) {
-        if !isAddMode {
-            let cameraPosition = YMKCameraPosition(target: point, zoom: map.cameraPosition.zoom, azimuth: 0, tilt: 0)
-            map.move(with: cameraPosition, animationType: YMKAnimation(type: .smooth, duration: 0.3), cameraCallback: nil)
-            placeView.show()
-            YandexGeocoderService.search(point: point) { (title) in
-                self.placeView.adressText.text = title
-            }
-            onClose()
+        if !isAddPlaceMode {
+            let currentZoom = map.cameraPosition.zoom
+            map.show(point: point, zoom: currentZoom, animationDuration: 0.3)
+            delegate?.showPlaceView(with: nil)
+            isAddPlaceMode = true
         }
     }
 }
 
 extension MapView: YMKMapCameraListener {
-    func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateSource: YMKCameraUpdateSource, finished: Bool) {
-        if finished {
-            currentPoint = cameraPosition.target
-            if isAddMode {
-                let yPoint = YMKPoint(latitude: cameraPosition.target.latitude, longitude: cameraPosition.target.longitude)
-                YandexGeocoderService.search(point: yPoint) { (title) in
-                    self.placeView.adressText.text = title
-                }
-                let point = Point(latitude: yPoint.latitude, longitude: yPoint.longitude)
-                self.placeView.currentPoint = point
+    func onCameraPositionChanged(with map: YMKMap,
+                                 cameraPosition: YMKCameraPosition,
+                                 cameraUpdateSource: YMKCameraUpdateSource,
+                                 finished: Bool) {
+        if isAddAddressMode && finished {
+            YandexGeocoderService.search(point: cameraPosition.target) { (name) in
+                self.delegate?.setPlaceName(name: name)
             }
         }
     }
@@ -84,9 +99,20 @@ extension MapView: YMKMapCameraListener {
 
 extension MapView: YMKMapObjectTapListener {
     func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
-        map.move(with: YMKCameraPosition(target: point, zoom: map.cameraPosition.zoom, azimuth: 0, tilt: 0), animationType: YMKAnimation(type: .smooth, duration: 0.3), cameraCallback: nil)
-        onPlaceTap()
+        self.mapObject = mapObject
+        let currentZoom = map.cameraPosition.zoom
+        map.show(point: point, zoom: currentZoom, animationDuration: 0.3)
+        if let place = mapObject.userData as! Place? {
+            delegate?.showPlaceView(with: place)
+        }
         return true
+    }
+}
+
+extension YMKMap {
+    func show(point: YMKPoint, zoom: Float, animationDuration: Float) {
+        let cameraPosition = YMKCameraPosition(target: point, zoom: zoom, azimuth: 0, tilt: 0)
+        self.move(with: cameraPosition, animationType: YMKAnimation(type: .smooth, duration: animationDuration), cameraCallback: nil)
     }
 }
 

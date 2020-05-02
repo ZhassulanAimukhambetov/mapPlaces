@@ -1,4 +1,9 @@
 PODS:
+  - Realm (4.4.1):
+    - Realm/Headers (= 4.4.1)
+  - Realm/Headers (4.4.1)
+  - RealmSwift (4.4.1):
+    - Realm (= 4.4.1)
   - YandexMapKit (3.4):
     - YandexRuntime (= 3.4)
   - YandexMapKitDirections (3.4):
@@ -10,23 +15,28 @@ PODS:
   - YandexRuntime (3.4)
 
 DEPENDENCIES:
+  - RealmSwift
   - YandexMapKit
   - YandexMapKitDirections
   - YandexMapKitSearch
 
 SPEC REPOS:
   trunk:
+    - Realm
+    - RealmSwift
     - YandexMapKit
     - YandexMapKitDirections
     - YandexMapKitSearch
     - YandexRuntime
 
 SPEC CHECKSUMS:
+  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
+  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   YandexMapKit: f222923561fe159dd8480d927f61950fc5ff3b8d
   YandexMapKitDirections: 59ba4317a782f89125e8f3dbd754c6adf95de499
   YandexMapKitSearch: 9d658009a11ce4973e5b1c59aacb72c3f63c808a
   YandexRuntime: 2547d72a3ce4757f16ad188cfbe8a124ae13d806
 
-PODFILE CHECKSUM: f7d7622043ce1fa13931245b9696d5bd23420b6f
+PODFILE CHECKSUM: 7835e9415bdefab4ed7559c40af82adef7ec872d
 
 COCOAPODS: 1.8.4

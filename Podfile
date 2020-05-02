@@ -9,5 +9,5 @@ target 'namazPlace' do
   pod ‘YandexMapKit’
   pod ‘YandexMapKitDirections’
   pod ‘YandexMapKitSearch’
-
+  pod 'RealmSwift'
 end

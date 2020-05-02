@@ -8,81 +8,107 @@
 
 import UIKit
 
-protocol MapVCDelegate {
-    func addPlace(place: Place)
-}
-
 class MapVC: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var placeView: PlaceView!
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var markerPin: UIImageView!
     @IBOutlet weak var botViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addressLabel: UILabel!
     
     var places: [Place] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        placeView.mapVCDelegate = self
-        placeView.mapView = self.mapView
-        mapView.placeView = self.placeView
         addKeyboardNotification()
-        self.mapView.onClose = {
-            self.markerPin.isHidden = false
-        }
-        self.mapView.onPlaceTap = {
-            self.showMenu()
-        }
-        self.placeView.onClose = {
-            self.view.endEditing(true)
-            self.markerPin.isHidden = true
+        mapView.delegate = self
+        placeView.delegate = self
+        if let places = RealmCash.shared.readFromRealm() {
+            self.places = places
+            mapView.addPlaceMarks(places: places)
         }
     }
     
     @IBAction func menuButtonTouch(_ sender: Any) {
         showMenu()
-        
+        menuButton.isHidden = true
+    }
+    @IBAction func closeButton(_ sender: Any) {
+        pickMapPoint(show: false)
+    }
+    @IBAction func addressTextTouched(_ sender: UITextField) {
+        self.view.endEditing(true)
+        pickMapPoint(show: true)
+    }
+    
+    private func pickMapPoint(show: Bool) {
+        botViewConstraint.constant = show ? -200 : 20
+        animation(duration: 0.5)
+        markerPin.isHidden = !show
+        closeButton.isHidden = !show
+        mapView.isAddAddressMode = show
+        addressLabel.isHidden = !show
+        addressLabel.text = "Выберите место на карте"
     }
     
     private func showMenu() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let addPlaceAction = UIAlertAction(title: "Добавить новое место", style: .default) { (_) in
-            self.addPlace()
-            YandexGeocoderService.search(point: self.mapView.map.cameraPosition.target) { (title) in
-                self.placeView.adressText.text = title
-            }
-        }
-        let editPlaceAction = UIAlertAction(title: "Редактировать место", style: .default) { (_) in
-            
-        }
-        let updateAction = UIAlertAction(title: "Обновить карту", style: .default) { (_) in
-            self.updatePlaces()
+            self.placeView.show()
+            self.mapView.isAddPlaceMode = true
         }
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { (_) in
-            
+            self.menuButton.isHidden = false
         }
         alert.addAction(addPlaceAction)
-        alert.addAction(editPlaceAction)
-        alert.addAction(updateAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
-    
-    private func addPlace() {
-        self.placeView.show()
-        self.markerPin.isHidden = false
+}
+
+extension MapVC: PlaceViewDelegate {
+    func closeMenu() {
+        menuButton.isHidden = false
+        mapView.isAddPlaceMode = false
     }
-    //TODO: - add UPDATE PLACE
-    private func updatePlaces() {
-        
+    func createPlace() {
+        if placeView.isEditingMode {
+            mapView.removePlaceMark()
+        }
+        let point = mapView.map.cameraPosition.target
+        let name = placeView.nameText.text
+        let description = placeView.descriptionText.text
+        let address = placeView.addressText.text ?? ""
+        let place = Place(name: name, description: description, address: address, point: point)
+        places.append(place)
+        RealmCash.shared.writeToRealm(places: places)
+        mapView.addPlaceMark(place: place)
+        mapView.isAddPlaceMode = false
+    }
+    func replaceMenu() {
+        if mapView.isAddAddressMode {
+            pickMapPoint(show: false)
+        }
     }
 }
 
-extension MapVC: MapVCDelegate {
-    func addPlace(place: Place) {
-        places.append(place)
-        //UserDefaults.se
+extension MapVC: MapViewDelegate {
+    func closePlaceView() {
+        placeView.close()
+    }
+    func setPlaceName(name: String?) {
+        placeView.addressText.text = name
+        addressLabel.text = name
+    }
+    func showPlaceView(with place: Place?) {
+        menuButton.isHidden = true
+        if let place = place {
+            placeView.show(with: place)
+        } else {
+            placeView.show()
+        }
     }
 }
 
@@ -95,21 +121,19 @@ extension MapVC {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)),
                                                name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+    private func animation(duration: TimeInterval) {
+        UIView.animate(withDuration: duration, animations: { self.view.layoutIfNeeded() })
+    }
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             let endFrameY = endFrame?.origin.y ?? 0
-            let duration:TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
-            let animationCurve:UIView.AnimationOptions = UIView.AnimationOptions(rawValue: animationCurveRaw)
             if endFrameY >= UIScreen.main.bounds.size.height {
-                self.botViewConstraint?.constant = 30
+                self.botViewConstraint?.constant = 20
             } else {
                 self.botViewConstraint?.constant = (endFrame?.size.height ?? 0.0) + 10
             }
-            UIView.animate(withDuration: duration, delay: TimeInterval(0), options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() }, completion: nil)
+            animation(duration: 0.5)
         }
     }
 }

@@ -7,25 +7,28 @@
 //
 
 import Foundation
+import YandexMapKit
 
 struct Place {
     var name: String?
     var description: String?
-    var point: Point
-    
-    init(point: Point, name: String?, description: String?) {
-        self.name = name
-        self.description = description
-        self.point = point
-    }
-}
-
-struct Point {
+    var address: String?
     var latitude: Double
     var longitude: Double
     
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
+    init(name: String?, description: String?, address: String?, point: YMKPoint) {
+        self.name = name
+        self.description = description
+        self.address = address
+        latitude = point.latitude
+        longitude = point.longitude
+    }
+    
+    init(placeCashed: PlaceCashed) {
+        name = placeCashed.name
+        description = placeCashed.descriptionPlace
+        address = placeCashed.address
+        latitude = placeCashed.latitude
+        longitude = placeCashed.longitude
     }
 }

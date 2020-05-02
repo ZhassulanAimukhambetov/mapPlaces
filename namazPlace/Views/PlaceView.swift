@@ -8,56 +8,68 @@
 
 import UIKit
 
+protocol PlaceViewDelegate: AnyObject {
+    func createPlace()
+    func closeMenu()
+    func replaceMenu()
+}
+
 class PlaceView: UIView {
     
-    @IBOutlet weak var adressText: UITextField!
+    @IBOutlet weak var addressText: UITextField!
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var descriptionText: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-    var onClose: (() -> Void)!
-    var frameY: CGFloat!
-    var mapView: MapView!
-    var currentPoint: Point!
-    var mapVCDelegate: MapVCDelegate!
-    
+    weak var delegate: PlaceViewDelegate?
+    var isEditingMode = false
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         nameText.delegate = self
         descriptionText.delegate = self
-        adressText.delegate = self
+        addressText.delegate = self
         loadUI()
     }
     
+    func show() {
+        animation(isShow: true)
+    }
+    
+    func show(with place: Place) {
+        addressText.text = place.address
+        nameText.text = place.name
+        descriptionText.text = place.description
+        addButton.setTitle("Сохранить", for: .normal)
+        isEditingMode = true
+        animation(isShow: true)
+    }
+    
     @IBAction func addButtonTouched(_ sender: UIButton) {
-        let place = Place(point: currentPoint, name: nameText.text, description: descriptionText.text)
-        mapVCDelegate.addPlace(place: place)
-        onClose()
+        delegate?.createPlace()
         close()
-        mapView.isAddMode = false
-        mapView.addPlaceMark(point: mapView.currentPoint)
     }
     
     @IBAction func cancelButtonTouched(_ sender: Any) {
-        onClose()
         close()
-        mapView.isAddMode = false
     }
     
-    func show() {
-        clearView()
-        animation(isShow: true)
-        mapView.isAddMode = true
-    }
-    private func clearView() {
-        nameText.text = nil
-        descriptionText.text = nil
-        adressText.text = nil
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.replaceMenu()
     }
     
     func close() {
         animation(isShow: false)
+        clearView()
+        isEditingMode = false
+        delegate?.closeMenu()
+    }
+    
+    private func clearView() {
+        nameText.text = nil
+        descriptionText.text = nil
+        addressText.text = nil
     }
     
     private func animation(isShow: Bool) {
@@ -93,6 +105,12 @@ class PlaceView: UIView {
 extension PlaceView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == addressText {
+            return false
+        }
+        return true
     }
 }
 

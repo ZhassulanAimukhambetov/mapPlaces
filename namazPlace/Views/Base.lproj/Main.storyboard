@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,19 +22,14 @@
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerPin" translatesAutoresizingMaskIntoConstraints="NO" id="XKz-U5-4Jp">
                                 <rect key="frame" x="187" y="388.5" width="40" height="59"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="by8-qe-qnQ">
-                                <rect key="frame" x="177" y="782" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Byg-TT-0UG"/>
-                                    <constraint firstAttribute="width" constant="60" id="ZaY-WQ-Plw"/>
-                                </constraints>
-                                <state key="normal" image="details"/>
-                                <connections>
-                                    <action selector="menuButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojc-n0-hUv"/>
-                                </connections>
-                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите место на карте." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot2-IC-6oR">
+                                <rect key="frame" x="5" y="164" width="404" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaV-Qu-VtH" customClass="PlaceView" customModule="namazPlace" customModuleProvider="target">
-                                <rect key="frame" x="8" y="566" width="398" height="300"/>
+                                <rect key="frame" x="8" y="576" width="398" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="S0f-4V-N9h">
                                         <rect key="frame" x="16" y="16" width="366" height="63.5"/>
@@ -49,6 +44,9 @@
                                                 <rect key="frame" x="0.0" y="29.5" width="366" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="addressTextTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="5Eq-6r-VM0"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -93,7 +91,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="Добавить"/>
                                                 <connections>
-                                                    <action selector="addButtonTouched:" destination="yaV-Qu-VtH" eventType="touchUpInside" id="GRU-1r-Jcu"/>
+                                                    <action selector="addButtonTouched:" destination="yaV-Qu-VtH" eventType="touchUpInside" id="jGP-YZ-5M6"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3M8-D8-amg">
@@ -129,12 +127,38 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="addButton" destination="O3O-RW-Bap" id="9AL-UV-dt1"/>
-                                    <outlet property="adressText" destination="Yaj-mz-bn9" id="SrK-S3-10w"/>
+                                    <outlet property="addressText" destination="Yaj-mz-bn9" id="SrK-S3-10w"/>
                                     <outlet property="cancelButton" destination="3M8-D8-amg" id="p6d-Gc-PGh"/>
                                     <outlet property="descriptionText" destination="HeL-Cc-jXG" id="V4u-uV-BaF"/>
                                     <outlet property="nameText" destination="R1a-LK-T10" id="DhR-Yv-Z8m"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="by8-qe-qnQ">
+                                <rect key="frame" x="177" y="782" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Byg-TT-0UG"/>
+                                    <constraint firstAttribute="width" constant="60" id="ZaY-WQ-Plw"/>
+                                </constraints>
+                                <state key="normal" image="details"/>
+                                <connections>
+                                    <action selector="menuButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojc-n0-hUv"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItB-ao-C5E">
+                                <rect key="frame" x="187" y="526" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="a0m-d1-hGz"/>
+                                    <constraint firstAttribute="height" constant="40" id="tDO-Qq-BzE"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="close-icon-13601">
+                                    <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large" weight="medium"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9F-K9-nSG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
@@ -143,17 +167,24 @@
                             <constraint firstItem="XKz-U5-4Jp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="7dW-8J-YT2"/>
                             <constraint firstItem="0gv-Cb-1rt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A1Y-Jg-sC3"/>
                             <constraint firstItem="yaV-Qu-VtH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Gd0-tl-mlh"/>
+                            <constraint firstItem="ot2-IC-6oR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="MIo-H0-zZV"/>
                             <constraint firstAttribute="bottom" secondItem="0gv-Cb-1rt" secondAttribute="bottom" id="OKb-qV-ZEt"/>
-                            <constraint firstAttribute="bottom" secondItem="yaV-Qu-VtH" secondAttribute="bottom" constant="30" id="Zu2-Ur-0VI"/>
+                            <constraint firstAttribute="bottom" secondItem="yaV-Qu-VtH" secondAttribute="bottom" constant="20" id="Zu2-Ur-0VI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0gv-Cb-1rt" secondAttribute="trailing" id="dpz-Zh-EWU"/>
+                            <constraint firstItem="ItB-ao-C5E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gE3-XB-WBA"/>
+                            <constraint firstItem="ot2-IC-6oR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="hDK-uC-mNM"/>
+                            <constraint firstItem="yaV-Qu-VtH" firstAttribute="top" secondItem="ItB-ao-C5E" secondAttribute="bottom" constant="10" id="lA3-46-rBt"/>
                             <constraint firstItem="0gv-Cb-1rt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rPx-e6-0nk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ot2-IC-6oR" secondAttribute="trailing" constant="5" id="xe5-AY-Yty"/>
                             <constraint firstItem="XKz-U5-4Jp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yOX-Cg-oK4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="by8-qe-qnQ" secondAttribute="bottom" constant="20" id="z3a-Zx-7Ln"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="botViewConstraint" destination="Zu2-Ur-0VI" id="5Ag-qq-GJ5"/>
+                        <outlet property="addressLabel" destination="ot2-IC-6oR" id="VTC-ur-mEh"/>
+                        <outlet property="botViewConstraint" destination="Zu2-Ur-0VI" id="MN6-Ow-9lA"/>
+                        <outlet property="closeButton" destination="ItB-ao-C5E" id="i2g-Yf-WKK"/>
                         <outlet property="mapView" destination="0gv-Cb-1rt" id="nyi-uy-afV"/>
                         <outlet property="markerPin" destination="XKz-U5-4Jp" id="NV8-pW-Nrf"/>
                         <outlet property="menuButton" destination="by8-qe-qnQ" id="0KQ-Ms-6R8"/>
@@ -166,6 +197,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close-icon-13601" width="200" height="200"/>
         <image name="details" width="80" height="80"/>
         <image name="markerPin" width="40" height="59"/>
     </resources>

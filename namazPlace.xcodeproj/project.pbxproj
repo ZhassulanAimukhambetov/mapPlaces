@@ -11,6 +11,8 @@
 		D1A72703245AD38F00BDEA19 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A72702245AD38F00BDEA19 /* MapView.swift */; };
 		D1B4B329245B0E5D009252FA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4B328245B0E5D009252FA /* Place.swift */; };
 		D1B4B32C245B1637009252FA /* YandexGeocoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */; };
+		D1C343C2245DBD6C008BE4D4 /* RealmCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C1245DBD6C008BE4D4 /* RealmCash.swift */; };
+		D1C343C4245DBE75008BE4D4 /* PlaceCashed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */; };
 		D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC49D245A89E10090DF58 /* AppDelegate.swift */; };
 		D1EDC4A5245A89E10090DF58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A3245A89E10090DF58 /* Main.storyboard */; };
 		D1EDC4A7245A89E20090DF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A6245A89E20090DF58 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		D1A72702245AD38F00BDEA19 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D1B4B328245B0E5D009252FA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexGeocoderService.swift; sourceTree = "<group>"; };
+		D1C343C1245DBD6C008BE4D4 /* RealmCash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCash.swift; sourceTree = "<group>"; };
+		D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCashed.swift; sourceTree = "<group>"; };
 		D1EDC49A245A89E10090DF58 /* namazPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = namazPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EDC49D245A89E10090DF58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1EDC4A4245A89E10090DF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				D1B4B328245B0E5D009252FA /* Place.swift */,
+				D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */,
+				D1C343C1245DBD6C008BE4D4 /* RealmCash.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,13 +154,13 @@
 		D1EDC49C245A89E10090DF58 /* namazPlace */ = {
 			isa = PBXGroup;
 			children = (
+				D1A726FE245AD31600BDEA19 /* Application */,
 				D1B4B32A245B1619009252FA /* Services */,
 				D1B4B327245B0E4C009252FA /* Models */,
-				D1A726FF245AD32700BDEA19 /* Resourses */,
-				D1A726FE245AD31600BDEA19 /* Application */,
-				D1A726FD245AD30B00BDEA19 /* Extensions */,
-				D1A726FC245AD2FB00BDEA19 /* Controllers */,
 				D1A726FB245AD2F200BDEA19 /* Views */,
+				D1A726FC245AD2FB00BDEA19 /* Controllers */,
+				D1A726FF245AD32700BDEA19 /* Resourses */,
+				D1A726FD245AD30B00BDEA19 /* Extensions */,
 			);
 			path = namazPlace;
 			sourceTree = "<group>";
@@ -171,6 +177,7 @@
 				D1EDC497245A89E10090DF58 /* Frameworks */,
 				D1EDC498245A89E10090DF58 /* Resources */,
 				B3810D89E4AD8B6A4C47FE39 /* [CP] Copy Pods Resources */,
+				C16942820C32F78184769292 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,6 +252,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C16942820C32F78184769292 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EC359EB165E681B7C81F33DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,7 +300,9 @@
 			files = (
 				D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */,
 				D1EDC4B4245A8C770090DF58 /* MapVC.swift in Sources */,
+				D1C343C2245DBD6C008BE4D4 /* RealmCash.swift in Sources */,
 				D1A72703245AD38F00BDEA19 /* MapView.swift in Sources */,
+				D1C343C4245DBE75008BE4D4 /* PlaceCashed.swift in Sources */,
 				D1B4B329245B0E5D009252FA /* Place.swift in Sources */,
 				D1EDC4B8245A96A70090DF58 /* Extension+UIView.swift in Sources */,
 				D1EDC4B6245A8F690090DF58 /* PlaceView.swift in Sources */,
