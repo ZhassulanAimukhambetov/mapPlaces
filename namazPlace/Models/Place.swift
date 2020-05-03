@@ -11,7 +11,7 @@ import YandexMapKit
 import RealmSwift
 
 class Place {
-    var id: Int = 0
+    var id: String = ""
     var name: String?
     var description: String?
     var address: String?
@@ -20,13 +20,13 @@ class Place {
     
     init() {}
     
-    init(id: Int, name: String?, description: String?, address: String?, latitude: Double, longitude: Double) {
+    init(id: String, name: String?, description: String?, address: String?, latitude: Double, longitude: Double) {
         self.id = id
         self.name = name
         self.description = description
-        self.address = address
         self.latitude = latitude
         self.longitude = longitude
+        self.address = address
     }
     convenience init(placeCashed: PlaceCashed) {
         self.init()

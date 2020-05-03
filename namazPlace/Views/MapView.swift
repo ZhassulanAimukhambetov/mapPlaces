@@ -101,10 +101,11 @@ extension MapView: YMKMapCameraListener {
 extension MapView: YMKMapObjectTapListener {
     func onMapObjectTap(with mapObject: YMKMapObject, point: YMKPoint) -> Bool {
         self.mapObject = mapObject
-        let currentZoom = map.cameraPosition.zoom
-        map.show(point: point, zoom: currentZoom, animationDuration: 0.3)
         if let place = mapObject.userData as! Place? {
+            let objectPoint = YMKPoint(latitude: place.latitude, longitude: place.longitude)
+            map.show(point: objectPoint, zoom: 15, animationDuration: 0.3)
             delegate?.showPlaceView(with: place)
+            isAddPlaceMode = true
         }
         return true
     }

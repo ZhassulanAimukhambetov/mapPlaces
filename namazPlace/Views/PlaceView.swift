@@ -35,6 +35,7 @@ class PlaceView: UIView {
     
     func show() {
         animation(isShow: true)
+        addButton.setTitle("Добавить", for: .normal)
     }
     
     func show(with place: Place) {
@@ -47,8 +48,12 @@ class PlaceView: UIView {
     }
     
     @IBAction func addButtonTouched(_ sender: UIButton) {
-        delegate?.createPlace()
-        close()
+        if addressText.hasText {
+            delegate?.createPlace()
+            close()
+        } else {
+            close()
+        }
     }
     
     @IBAction func cancelButtonTouched(_ sender: Any) {

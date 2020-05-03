@@ -8,7 +8,7 @@
 import RealmSwift
 
 class PlaceCashed: Object {
-    @objc dynamic var id: Int = 0
+    @objc dynamic var id: String = ""
     @objc dynamic var name: String?
     @objc dynamic var descriptionPlace: String?
     @objc dynamic var address: String?

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MapVC: UIViewController {
     
@@ -41,6 +42,10 @@ class MapVC: UIViewController {
     @IBAction func addressTextTouched(_ sender: UITextField) {
         self.view.endEditing(true)
         pickMapPoint(show: true)
+        YandexGeocoderService.search(point: mapView.map.cameraPosition.target) { (title) in
+            sender.text = title
+            self.addressLabel.text = title
+        }
     }
     
     private func pickMapPoint(show: Bool) {
@@ -76,16 +81,31 @@ extension MapVC: PlaceViewDelegate {
     func createPlace() {
         if placeView.isEditingMode {
             mapView.removePlaceMark()
+            guard let place = mapView.mapObject?.userData as? Place else { return }
+            places.removeAll{ $0.id == place.id }
+            let point = mapView.map.cameraPosition.target
+            place.name = placeView.nameText.text
+            place.description = placeView.descriptionText.text
+            place.address = placeView.addressText.text
+            place.latitude = point.latitude
+            place.longitude = point.longitude
+            places.append(place)
+            StorageManager.writeToStorage(places: places)
+            mapView.addPlaceMark(place: place)
+            mapView.isAddPlaceMode = false
+        } else {
+            let point = mapView.map.cameraPosition.target
+            let name = placeView.nameText.text
+            let description = placeView.descriptionText.text
+            let address = placeView.addressText.text
+            let place = Place(id: UUID().uuidString, name: name, description: description, address: address, latitude: point.latitude, longitude: point.longitude)
+            places.append(place)
+            StorageManager.writeToStorage(places: places)
+            mapView.addPlaceMark(place: place)
+            mapView.isAddPlaceMode = false
         }
-        let point = mapView.map.cameraPosition.target
-        let name = placeView.nameText.text
-        let description = placeView.descriptionText.text
-        let address = placeView.addressText.text ?? ""
-        let place = Place(id: places.count, name: name, description: description, address: address, latitude: point.latitude, longitude: point.longitude)
-        places.append(place)
-        StorageManager.writeToStorage(places: places)
-        mapView.addPlaceMark(place: place)
-        mapView.isAddPlaceMode = false
+        places.forEach({ print($0.id) })
+        print(places.count)
     }
     func replaceMenu() {
         if mapView.isAddAddressMode {
