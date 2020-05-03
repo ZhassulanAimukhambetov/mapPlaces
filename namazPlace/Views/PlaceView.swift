@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PlaceViewDelegate: AnyObject {
-    func createPlace()
+    func create(_ place: Place)
     func closeMenu()
     func replaceMenu()
 }
@@ -49,7 +49,7 @@ class PlaceView: UIView {
     
     @IBAction func addButtonTouched(_ sender: UIButton) {
         if addressText.hasText {
-            delegate?.createPlace()
+            delegate?.create(newPlace())
             close()
         } else {
             close()
@@ -69,6 +69,14 @@ class PlaceView: UIView {
         clearView()
         isEditingMode = false
         delegate?.closeMenu()
+    }
+    
+    func newPlace() -> Place {
+        let place = Place()
+        place.address = addressText.text
+        place.name = nameText.text
+        place.description = descriptionText.text
+        return place
     }
     
     private func clearView() {

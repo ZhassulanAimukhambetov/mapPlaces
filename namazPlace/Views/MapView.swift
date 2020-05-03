@@ -45,17 +45,11 @@ class MapView: YMKMapView {
         }
     }
     
-    func addPlaceMark(place: Place) {
-        let point = YMKPoint(latitude: place.latitude, longitude: place.longitude)
-        let placeMark = map.mapObjects.addPlacemark(with: point)
-        placeMark.setIconWith(UIImage(named: "mosque")!)
-        placeMark.userData = place
-        placeMark.addTapListener(with: self)
-    }
-    
-    func removePlaceMark() {
-        guard let mapObject = mapObject else { return }
+    func curentPlace() -> Place {
+        guard let mapObject = mapObject else { return Place() }
         map.mapObjects.remove(with: mapObject)
+        guard let currentPlace = mapObject.userData as? Place else { return Place() }
+        return currentPlace
     }
     
     private func loadMap() {

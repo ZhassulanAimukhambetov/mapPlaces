@@ -44,7 +44,6 @@ class MapVC: UIViewController {
         pickMapPoint(show: true)
         YandexGeocoderService.search(point: mapView.map.cameraPosition.target) { (title) in
             sender.text = title
-            self.addressLabel.text = title
         }
     }
     
@@ -72,48 +71,38 @@ class MapVC: UIViewController {
         present(alert, animated: true)
     }
 }
-
+//MARK: - PlaceViewDelegate
 extension MapVC: PlaceViewDelegate {
     func closeMenu() {
         menuButton.isHidden = false
         mapView.isAddPlaceMode = false
     }
-    func createPlace() {
+    func create(_ place: Place) {
         if placeView.isEditingMode {
-            mapView.removePlaceMark()
-            guard let place = mapView.mapObject?.userData as? Place else { return }
-            places.removeAll{ $0.id == place.id }
-            let point = mapView.map.cameraPosition.target
-            place.name = placeView.nameText.text
-            place.description = placeView.descriptionText.text
-            place.address = placeView.addressText.text
-            place.latitude = point.latitude
-            place.longitude = point.longitude
-            places.append(place)
-            StorageManager.writeToStorage(places: places)
-            mapView.addPlaceMark(place: place)
-            mapView.isAddPlaceMode = false
+            let currentPlace = mapView.curentPlace()
+            places.removeAll{ $0.id == currentPlace.id }
+            place.id = currentPlace.id
         } else {
-            let point = mapView.map.cameraPosition.target
-            let name = placeView.nameText.text
-            let description = placeView.descriptionText.text
-            let address = placeView.addressText.text
-            let place = Place(id: UUID().uuidString, name: name, description: description, address: address, latitude: point.latitude, longitude: point.longitude)
-            places.append(place)
-            StorageManager.writeToStorage(places: places)
-            mapView.addPlaceMark(place: place)
-            mapView.isAddPlaceMode = false
+            place.id = UUID().uuidString
         }
-        places.forEach({ print($0.id) })
-        print(places.count)
+        let point = mapView.map.cameraPosition.target
+        place.latitude = point.latitude
+        place.longitude = point.longitude
+        add(newPlace: place)
+        mapView.isAddPlaceMode = false
     }
     func replaceMenu() {
         if mapView.isAddAddressMode {
             pickMapPoint(show: false)
         }
     }
+    private func add(newPlace: Place) {
+        places.append(newPlace)
+        StorageManager.writeToStorage(places: places)
+        mapView.addPlaceMarks(places: [newPlace])
+    }
 }
-
+//MARK: - MapViewDelegate
 extension MapVC: MapViewDelegate {
     func closePlaceView() {
         placeView.close()
