@@ -41,6 +41,7 @@ class MapView: YMKMapView {
             let placeMark = map.mapObjects.addPlacemark(with: point)
             placeMark.setIconWith(UIImage(named: "mosque")!)
             placeMark.userData = place
+            placeMark.addTapListener(with: self)
         }
     }
     

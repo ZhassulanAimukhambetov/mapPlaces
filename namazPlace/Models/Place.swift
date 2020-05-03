@@ -8,23 +8,29 @@
 
 import Foundation
 import YandexMapKit
+import RealmSwift
 
-struct Place {
+class Place {
+    var id: Int = 0
     var name: String?
     var description: String?
     var address: String?
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double = 0
+    var longitude: Double = 0
     
-    init(name: String?, description: String?, address: String?, point: YMKPoint) {
+    init() {}
+    
+    init(id: Int, name: String?, description: String?, address: String?, latitude: Double, longitude: Double) {
+        self.id = id
         self.name = name
         self.description = description
         self.address = address
-        latitude = point.latitude
-        longitude = point.longitude
+        self.latitude = latitude
+        self.longitude = longitude
     }
-    
-    init(placeCashed: PlaceCashed) {
+    convenience init(placeCashed: PlaceCashed) {
+        self.init()
+        id = placeCashed.id
         name = placeCashed.name
         description = placeCashed.descriptionPlace
         address = placeCashed.address

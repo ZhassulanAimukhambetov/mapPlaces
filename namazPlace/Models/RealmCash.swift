@@ -8,11 +8,9 @@
 import Foundation
 import RealmSwift
 
-class RealmCash {
-    
-    static let shared = RealmCash()
-    
-    func writeToRealm(places: [Place]) {
+class StorageManager {
+
+    static func writeToStorage(places: [Place]) {
         places
             .map{PlaceCashed(place: $0)}
             .forEach{ place in
@@ -21,13 +19,13 @@ class RealmCash {
                     try realm.write({
                         realm.add(place, update: .modified)
                     })
-                } catch let error {
+                } catch let error as NSError {
                     print("Error writeToRealm: \(error.localizedDescription)")
                 }
         }
     }
     
-    func readFromRealm() -> [Place]? {
+    static func readFromStorage() -> [Place]? {
         do {
             let realm = try Realm()
             return realm

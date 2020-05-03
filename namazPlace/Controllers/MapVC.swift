@@ -25,7 +25,7 @@ class MapVC: UIViewController {
         addKeyboardNotification()
         mapView.delegate = self
         placeView.delegate = self
-        if let places = RealmCash.shared.readFromRealm() {
+        if let places = StorageManager.readFromStorage() {
             self.places = places
             mapView.addPlaceMarks(places: places)
         }
@@ -81,9 +81,9 @@ extension MapVC: PlaceViewDelegate {
         let name = placeView.nameText.text
         let description = placeView.descriptionText.text
         let address = placeView.addressText.text ?? ""
-        let place = Place(name: name, description: description, address: address, point: point)
+        let place = Place(id: places.count, name: name, description: description, address: address, latitude: point.latitude, longitude: point.longitude)
         places.append(place)
-        RealmCash.shared.writeToRealm(places: places)
+        StorageManager.writeToStorage(places: places)
         mapView.addPlaceMark(place: place)
         mapView.isAddPlaceMode = false
     }
