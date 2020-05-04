@@ -26,10 +26,24 @@ class MapVC: UIViewController {
         addKeyboardNotification()
         mapView.delegate = self
         placeView.delegate = self
-        if let places = StorageManager.readFromStorage() {
+        if let places = StorageManager.readFromStorage(), places.count != 0 {
             self.places = places
             mapView.addPlaceMarks(places: places)
+            FirebaseService.shared.readFromDatabase { (places) in
+                self.places = places
+                self.mapView.map.mapObjects.clear()
+                self.mapView.addPlaceMarks(places: places)
+                StorageManager.deleteAllPlaces()
+                StorageManager.writeToStorage(places: places)
+            }
+        } else {
+            FirebaseService.shared.readFromDatabase { (places) in
+                self.places = places
+                self.mapView.addPlaceMarks(places: places)
+                StorageManager.writeToStorage(places: places)
+            }
         }
+        print(places.count)
     }
     
     @IBAction func menuButtonTouch(_ sender: Any) {
@@ -98,6 +112,7 @@ extension MapVC: PlaceViewDelegate {
     }
     private func add(newPlace: Place) {
         places.append(newPlace)
+        FirebaseService.shared.writeToDatabase(place: newPlace)
         StorageManager.writeToStorage(places: places)
         mapView.addPlaceMarks(places: [newPlace])
     }

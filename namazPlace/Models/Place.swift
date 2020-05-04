@@ -10,17 +10,17 @@ import Foundation
 import YandexMapKit
 import RealmSwift
 
-class Place {
+class Place: Decodable {
     var id: String = ""
-    var name: String?
-    var description: String?
-    var address: String?
+    var name: String = ""
+    var description: String = ""
+    var address: String = ""
     var latitude: Double = 0
     var longitude: Double = 0
     
     init() {}
     
-    init(id: String, name: String?, description: String?, address: String?, latitude: Double, longitude: Double) {
+    init(id: String, name: String, description: String, address: String, latitude: Double, longitude: Double) {
         self.id = id
         self.name = name
         self.description = description

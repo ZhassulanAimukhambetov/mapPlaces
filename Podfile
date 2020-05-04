@@ -10,4 +10,5 @@ target 'namazPlace' do
   pod ‘YandexMapKitDirections’
   pod ‘YandexMapKitSearch’
   pod 'RealmSwift'
+  pod 'Firebase/Database'
 end

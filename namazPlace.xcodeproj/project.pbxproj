@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A08B9FAB81B8DC6EC8F2EB4 /* Pods_namazPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D11F00962EC23EE27136D1 /* Pods_namazPlace.framework */; };
+		5A2205983065E458385709FD /* Pods_namazPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AE38CA50D97F424E60C007 /* Pods_namazPlace.framework */; };
 		D1A72703245AD38F00BDEA19 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A72702245AD38F00BDEA19 /* MapView.swift */; };
 		D1B4B329245B0E5D009252FA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4B328245B0E5D009252FA /* Place.swift */; };
 		D1B4B32C245B1637009252FA /* YandexGeocoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */; };
-		D1C343C2245DBD6C008BE4D4 /* RealmCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C1245DBD6C008BE4D4 /* RealmCash.swift */; };
+		D1BE5272246089FD0096EC41 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE5271246089FC0096EC41 /* FirebaseService.swift */; };
+		D1BE5274246090A40096EC41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BE5273246090A40096EC41 /* GoogleService-Info.plist */; };
+		D1C343C2245DBD6C008BE4D4 /* RealmSwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C1245DBD6C008BE4D4 /* RealmSwiftService.swift */; };
 		D1C343C4245DBE75008BE4D4 /* PlaceCashed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */; };
 		D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC49D245A89E10090DF58 /* AppDelegate.swift */; };
 		D1EDC4A5245A89E10090DF58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A3245A89E10090DF58 /* Main.storyboard */; };
@@ -23,13 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45D2D3C28EB0B42ACFF81A52 /* Pods-namazPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-namazPlace.release.xcconfig"; path = "Target Support Files/Pods-namazPlace/Pods-namazPlace.release.xcconfig"; sourceTree = "<group>"; };
-		B575FC15FEBF75B40F2EAF0E /* Pods-namazPlace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-namazPlace.debug.xcconfig"; path = "Target Support Files/Pods-namazPlace/Pods-namazPlace.debug.xcconfig"; sourceTree = "<group>"; };
-		C1D11F00962EC23EE27136D1 /* Pods_namazPlace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_namazPlace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		936F360486D539E32FDE0BE7 /* Pods-namazPlace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-namazPlace.debug.xcconfig"; path = "Target Support Files/Pods-namazPlace/Pods-namazPlace.debug.xcconfig"; sourceTree = "<group>"; };
+		D0AE38CA50D97F424E60C007 /* Pods_namazPlace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_namazPlace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1A72702245AD38F00BDEA19 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D1B4B328245B0E5D009252FA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexGeocoderService.swift; sourceTree = "<group>"; };
-		D1C343C1245DBD6C008BE4D4 /* RealmCash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCash.swift; sourceTree = "<group>"; };
+		D1BE5271246089FC0096EC41 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		D1BE5273246090A40096EC41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1C343C1245DBD6C008BE4D4 /* RealmSwiftService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSwiftService.swift; sourceTree = "<group>"; };
 		D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCashed.swift; sourceTree = "<group>"; };
 		D1EDC49A245A89E10090DF58 /* namazPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = namazPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EDC49D245A89E10090DF58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		D1EDC4B3245A8C770090DF58 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		D1EDC4B5245A8F690090DF58 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
 		D1EDC4B7245A96A70090DF58 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		D2CEAE33E84F3B8A280120A1 /* Pods-namazPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-namazPlace.release.xcconfig"; path = "Target Support Files/Pods-namazPlace/Pods-namazPlace.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,28 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A08B9FAB81B8DC6EC8F2EB4 /* Pods_namazPlace.framework in Frameworks */,
+				5A2205983065E458385709FD /* Pods_namazPlace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E9609B0C10B6F94F45AD82C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C1D11F00962EC23EE27136D1 /* Pods_namazPlace.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8055C258288E55220A14BE08 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B575FC15FEBF75B40F2EAF0E /* Pods-namazPlace.debug.xcconfig */,
-				45D2D3C28EB0B42ACFF81A52 /* Pods-namazPlace.release.xcconfig */,
+				936F360486D539E32FDE0BE7 /* Pods-namazPlace.debug.xcconfig */,
+				D2CEAE33E84F3B8A280120A1 /* Pods-namazPlace.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A2395D34888BF089144592D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0AE38CA50D97F424E60C007 /* Pods_namazPlace.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D1A726FB245AD2F200BDEA19 /* Views */ = {
@@ -120,7 +124,6 @@
 			children = (
 				D1B4B328245B0E5D009252FA /* Place.swift */,
 				D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */,
-				D1C343C1245DBD6C008BE4D4 /* RealmCash.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -129,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				D1B4B32B245B1637009252FA /* YandexGeocoderService.swift */,
+				D1BE5271246089FC0096EC41 /* FirebaseService.swift */,
+				D1C343C1245DBD6C008BE4D4 /* RealmSwiftService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -139,7 +144,7 @@
 				D1EDC49C245A89E10090DF58 /* namazPlace */,
 				D1EDC49B245A89E10090DF58 /* Products */,
 				8055C258288E55220A14BE08 /* Pods */,
-				6E9609B0C10B6F94F45AD82C /* Frameworks */,
+				A2395D34888BF089144592D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +159,7 @@
 		D1EDC49C245A89E10090DF58 /* namazPlace */ = {
 			isa = PBXGroup;
 			children = (
+				D1BE5273246090A40096EC41 /* GoogleService-Info.plist */,
 				D1A726FE245AD31600BDEA19 /* Application */,
 				D1B4B32A245B1619009252FA /* Services */,
 				D1B4B327245B0E4C009252FA /* Models */,
@@ -172,12 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1EDC4AE245A89E20090DF58 /* Build configuration list for PBXNativeTarget "namazPlace" */;
 			buildPhases = (
-				EC359EB165E681B7C81F33DD /* [CP] Check Pods Manifest.lock */,
+				85AD755F5849BC69B25F7022 /* [CP] Check Pods Manifest.lock */,
 				D1EDC496245A89E10090DF58 /* Sources */,
 				D1EDC497245A89E10090DF58 /* Frameworks */,
 				D1EDC498245A89E10090DF58 /* Resources */,
-				B3810D89E4AD8B6A4C47FE39 /* [CP] Copy Pods Resources */,
-				C16942820C32F78184769292 /* [CP] Embed Pods Frameworks */,
+				67C4F8EC0F805701B8DF4DA7 /* [CP] Embed Pods Frameworks */,
+				7F77445FDB6644E8667EC44B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1EDC4AA245A89E20090DF58 /* LaunchScreen.storyboard in Resources */,
+				D1BE5274246090A40096EC41 /* GoogleService-Info.plist in Resources */,
 				D1EDC4A7245A89E20090DF58 /* Assets.xcassets in Resources */,
 				D1EDC4A5245A89E10090DF58 /* Main.storyboard in Resources */,
 			);
@@ -235,24 +242,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B3810D89E4AD8B6A4C47FE39 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C16942820C32F78184769292 /* [CP] Embed Pods Frameworks */ = {
+		67C4F8EC0F805701B8DF4DA7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,7 +259,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC359EB165E681B7C81F33DD /* [CP] Check Pods Manifest.lock */ = {
+		7F77445FDB6644E8667EC44B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-namazPlace/Pods-namazPlace-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85AD755F5849BC69B25F7022 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,10 +307,11 @@
 			files = (
 				D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */,
 				D1EDC4B4245A8C770090DF58 /* MapVC.swift in Sources */,
-				D1C343C2245DBD6C008BE4D4 /* RealmCash.swift in Sources */,
+				D1C343C2245DBD6C008BE4D4 /* RealmSwiftService.swift in Sources */,
 				D1A72703245AD38F00BDEA19 /* MapView.swift in Sources */,
 				D1C343C4245DBE75008BE4D4 /* PlaceCashed.swift in Sources */,
 				D1B4B329245B0E5D009252FA /* Place.swift in Sources */,
+				D1BE5272246089FD0096EC41 /* FirebaseService.swift in Sources */,
 				D1EDC4B8245A96A70090DF58 /* Extension+UIView.swift in Sources */,
 				D1EDC4B6245A8F690090DF58 /* PlaceView.swift in Sources */,
 				D1B4B32C245B1637009252FA /* YandexGeocoderService.swift in Sources */,
@@ -448,7 +456,7 @@
 		};
 		D1EDC4AF245A89E20090DF58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B575FC15FEBF75B40F2EAF0E /* Pods-namazPlace.debug.xcconfig */;
+			baseConfigurationReference = 936F360486D539E32FDE0BE7 /* Pods-namazPlace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -470,7 +478,7 @@
 		};
 		D1EDC4B0245A89E20090DF58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45D2D3C28EB0B42ACFF81A52 /* Pods-namazPlace.release.xcconfig */;
+			baseConfigurationReference = D2CEAE33E84F3B8A280120A1 /* Pods-namazPlace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

@@ -73,9 +73,9 @@ class PlaceView: UIView {
     
     func newPlace() -> Place {
         let place = Place()
-        place.address = addressText.text
-        place.name = nameText.text
-        place.description = descriptionText.text
+        place.address = addressText.text ?? ""
+        place.name = nameText.text ?? ""
+        place.description = descriptionText.text ?? ""
         return place
     }
     

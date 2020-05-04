@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class StorageManager {
-
+    
     static func writeToStorage(places: [Place]) {
         places
             .map{PlaceCashed(place: $0)}
@@ -35,5 +35,16 @@ class StorageManager {
             print("Error readToRealm: \(error.localizedDescription)")
         }
         return nil
+    }
+    
+    static func deleteAllPlaces() {
+        do {
+            let realm = try Realm()
+            try realm.write({
+                realm.deleteAll()
+            })
+        } catch let error as NSError {
+            print("Error writeToRealm: \(error.localizedDescription)")
+        }
     }
 }

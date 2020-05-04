@@ -9,9 +9,9 @@ import RealmSwift
 
 class PlaceCashed: Object {
     @objc dynamic var id: String = ""
-    @objc dynamic var name: String?
-    @objc dynamic var descriptionPlace: String?
-    @objc dynamic var address: String?
+    @objc dynamic var name: String = ""
+    @objc dynamic var descriptionPlace: String = ""
+    @objc dynamic var address: String = ""
     @objc dynamic var latitude: Double = 0
     @objc dynamic var longitude: Double = 0
     
