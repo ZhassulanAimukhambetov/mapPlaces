@@ -13,6 +13,7 @@ class MapVC: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     @IBOutlet weak var placeView: PlaceView!
+    @IBOutlet weak var descriptionView: DescriptionView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var markerPin: UIImageView!
@@ -26,6 +27,7 @@ class MapVC: UIViewController {
         addKeyboardNotification()
         mapView.delegate = self
         placeView.delegate = self
+        descriptionView.delegate = self
         if let places = StorageManager.readFromStorage(), places.count != 0 {
             self.places = places
             mapView.addPlaceMarks(places: places)
@@ -40,10 +42,10 @@ class MapVC: UIViewController {
             FirebaseService.shared.readFromDatabase { (places) in
                 self.places = places
                 self.mapView.addPlaceMarks(places: places)
+                StorageManager.deleteAllPlaces()
                 StorageManager.writeToStorage(places: places)
             }
         }
-        print(places.count)
     }
     
     @IBAction func menuButtonTouch(_ sender: Any) {
@@ -92,13 +94,7 @@ extension MapVC: PlaceViewDelegate {
         mapView.isAddPlaceMode = false
     }
     func create(_ place: Place) {
-        if placeView.isEditingMode {
-            let currentPlace = mapView.curentPlace()
-            places.removeAll{ $0.id == currentPlace.id }
-            place.id = currentPlace.id
-        } else {
-            place.id = UUID().uuidString
-        }
+        place.id = UUID().uuidString
         let point = mapView.map.cameraPosition.target
         place.latitude = point.latitude
         place.longitude = point.longitude
@@ -117,6 +113,23 @@ extension MapVC: PlaceViewDelegate {
         mapView.addPlaceMarks(places: [newPlace])
     }
 }
+//MARK: - DescriptionViewDelegate
+extension MapVC: DescriptionViewDelegate {
+    func setRating(of place: Place) {
+        if place.rating >= 0 {
+            FirebaseService.shared.writeToDatabase(place: place)
+            places.forEach {
+                if $0.id == place.id {
+                    $0.rating = place.rating
+                }
+            }
+        } else {
+            FirebaseService.shared.deleteItem(place: place)
+            places.removeAll { $0.id == place.id }
+        }
+        mapView.updatePlaceMark(with: place)
+    }
+}
 //MARK: - MapViewDelegate
 extension MapVC: MapViewDelegate {
     func closePlaceView() {
@@ -129,7 +142,7 @@ extension MapVC: MapViewDelegate {
     func showPlaceView(with place: Place?) {
         menuButton.isHidden = true
         if let place = place {
-            placeView.show(with: place)
+            descriptionView.show(with: place)
         } else {
             placeView.show()
         }

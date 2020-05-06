@@ -49,4 +49,22 @@ extension UIView {
             return self.bottomAnchor
         }
     }
+    
+    func animation(isShow: Bool, bottomConstraintValue: CGFloat) {
+        self.layer.removeAllAnimations()
+        UIView.animate(
+            withDuration: isShow ? 1 : 0.5,
+            delay: 0,
+            usingSpringWithDamping: isShow ? 0.8 : 0,
+            initialSpringVelocity: 0,
+            options: [.curveEaseIn, .beginFromCurrentState],
+            animations: {
+                self.isHidden = false
+                self.transform = isShow ? .identity : CGAffineTransform(translationX: 0, y: self.safeArea.bottom + self.frame.height + bottomConstraintValue)
+        }, completion: { completed in
+            if !isShow && completed {
+                self.isHidden = true
+            }
+        })
+    }
 }

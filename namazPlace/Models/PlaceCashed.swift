@@ -12,6 +12,7 @@ class PlaceCashed: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var descriptionPlace: String = ""
     @objc dynamic var address: String = ""
+    @objc dynamic var rating: Int = 0
     @objc dynamic var latitude: Double = 0
     @objc dynamic var longitude: Double = 0
     
@@ -21,6 +22,7 @@ class PlaceCashed: Object {
         name = place.name
         descriptionPlace = place.description
         address = place.address
+        rating = place.rating
         latitude = place.latitude
         longitude = place.longitude
     }

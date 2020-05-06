@@ -23,7 +23,6 @@ class PlaceView: UIView {
     @IBOutlet weak var cancelButton: UIButton!
     
     weak var delegate: PlaceViewDelegate?
-    var isEditingMode = false
         
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,17 +33,8 @@ class PlaceView: UIView {
     }
     
     func show() {
-        animation(isShow: true)
+        animation(isShow: true, bottomConstraintValue: 16)
         addButton.setTitle("Добавить", for: .normal)
-    }
-    
-    func show(with place: Place) {
-        addressText.text = place.address
-        nameText.text = place.name
-        descriptionText.text = place.description
-        addButton.setTitle("Сохранить", for: .normal)
-        isEditingMode = true
-        animation(isShow: true)
     }
     
     @IBAction func addButtonTouched(_ sender: UIButton) {
@@ -65,9 +55,8 @@ class PlaceView: UIView {
     }
     
     func close() {
-        animation(isShow: false)
+        animation(isShow: false, bottomConstraintValue: 16)
         clearView()
-        isEditingMode = false
         delegate?.closeMenu()
     }
     
@@ -85,23 +74,7 @@ class PlaceView: UIView {
         addressText.text = nil
     }
     
-    private func animation(isShow: Bool) {
-        self.layer.removeAllAnimations()
-        UIView.animate(
-            withDuration: 1,
-            delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0,
-            options: [.curveEaseIn, .beginFromCurrentState],
-            animations: {
-                self.isHidden = false
-                self.transform = isShow ? .identity : CGAffineTransform(translationX: 0, y: self.safeArea.bottom + self.frame.height + 16)
-        }, completion: { completed in
-            if !isShow && completed {
-                self.isHidden = true
-            }
-        })
-    }
+
     
     private func loadUI() {
         self.transform = CGAffineTransform(translationX: 0, y: self.safeArea.bottom + self.frame.height + 16)

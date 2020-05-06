@@ -16,13 +16,13 @@ class FirebaseService {
     init() {}
     
     func writeToDatabase(place: Place) {
-        let dict = ["id" : place.id, "name" : place.name, "description" : place.description, "address" : place.address, "latitude" : place.latitude, "longitude" : place.longitude] as [String : Any]
+        let dict = ["id" : place.id, "name" : place.name, "description" : place.description, "address" : place.address, "rating" : place.rating, "latitude" : place.latitude, "longitude" : place.longitude] as [String : Any]
         ref.child("places").child(place.id).setValue(dict)
     }
     
     func readFromDatabase(completion: @escaping ([Place]) -> Void) {
         var places = [Place]()
-        ref.child("places").observe(.value) { (snapshot) in
+        ref.child("places").observeSingleEvent(of: .value) { (snapshot) in
             guard let snapshotValue = snapshot.value as? [String : Any] else {
                 completion(places)
                 return
@@ -34,5 +34,9 @@ class FirebaseService {
             }
             completion(places)
         }
+    }
+    
+    func deleteItem(place: Place) {
+        ref.child("places").child(place.id).setValue(nil)
     }
 }

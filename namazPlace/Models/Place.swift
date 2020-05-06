@@ -15,6 +15,7 @@ class Place: Decodable {
     var name: String = ""
     var description: String = ""
     var address: String = ""
+    var rating: Int = 0
     var latitude: Double = 0
     var longitude: Double = 0
     
@@ -34,6 +35,7 @@ class Place: Decodable {
         name = placeCashed.name
         description = placeCashed.descriptionPlace
         address = placeCashed.address
+        rating = placeCashed.rating
         latitude = placeCashed.latitude
         longitude = placeCashed.longitude
     }

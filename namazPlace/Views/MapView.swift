@@ -36,24 +36,26 @@ class MapView: YMKMapView {
     }
     
     func addPlaceMarks(places: [Place]) {
+        print(places.count)
         places.forEach { (place) in
             let point = YMKPoint(latitude: place.latitude, longitude: place.longitude)
             let placeMark = map.mapObjects.addPlacemark(with: point)
-            placeMark.setIconWith(UIImage(named: "mosque")!)
+            placeMark.setIconWith(UIImage(named: "mosque\(place.rating)")!)
             placeMark.userData = place
             placeMark.addTapListener(with: self)
         }
     }
     
-    func curentPlace() -> Place {
-        guard let mapObject = mapObject else { return Place() }
+    func updatePlaceMark(with place: Place) {
+        guard let mapObject = mapObject else { return }
         map.mapObjects.remove(with: mapObject)
-        guard let currentPlace = mapObject.userData as? Place else { return Place() }
-        return currentPlace
+        if place.rating >= 0 {
+        addPlaceMarks(places: [place])
+        }
     }
     
     private func loadMap() {
-        map.isNightModeEnabled = true
+        map.isNightModeEnabled = false
         map.show(point: POINT_ASTANA, zoom: 12, animationDuration: 1.2)
     }
 }

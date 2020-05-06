@@ -15,6 +15,7 @@
 		D1BE5274246090A40096EC41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BE5273246090A40096EC41 /* GoogleService-Info.plist */; };
 		D1C343C2245DBD6C008BE4D4 /* RealmSwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C1245DBD6C008BE4D4 /* RealmSwiftService.swift */; };
 		D1C343C4245DBE75008BE4D4 /* PlaceCashed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */; };
+		D1D32F58246199CF00CDDE8E /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D32F57246199CF00CDDE8E /* DescriptionView.swift */; };
 		D1EDC49E245A89E10090DF58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDC49D245A89E10090DF58 /* AppDelegate.swift */; };
 		D1EDC4A5245A89E10090DF58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A3245A89E10090DF58 /* Main.storyboard */; };
 		D1EDC4A7245A89E20090DF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1EDC4A6245A89E20090DF58 /* Assets.xcassets */; };
@@ -34,7 +35,8 @@
 		D1BE5273246090A40096EC41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D1C343C1245DBD6C008BE4D4 /* RealmSwiftService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSwiftService.swift; sourceTree = "<group>"; };
 		D1C343C3245DBE75008BE4D4 /* PlaceCashed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCashed.swift; sourceTree = "<group>"; };
-		D1EDC49A245A89E10090DF58 /* namazPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = namazPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D32F57246199CF00CDDE8E /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		D1EDC49A245A89E10090DF58 /* SajdaPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SajdaPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EDC49D245A89E10090DF58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1EDC4A4245A89E10090DF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1EDC4A6245A89E20090DF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				D1EDC4B5245A8F690090DF58 /* PlaceView.swift */,
+				D1D32F57246199CF00CDDE8E /* DescriptionView.swift */,
 				D1A72702245AD38F00BDEA19 /* MapView.swift */,
 				D1EDC4A3245A89E10090DF58 /* Main.storyboard */,
 				D1EDC4A8245A89E20090DF58 /* LaunchScreen.storyboard */,
@@ -151,7 +154,7 @@
 		D1EDC49B245A89E10090DF58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D1EDC49A245A89E10090DF58 /* namazPlace.app */,
+				D1EDC49A245A89E10090DF58 /* SajdaPlace.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,8 +166,8 @@
 				D1A726FE245AD31600BDEA19 /* Application */,
 				D1B4B32A245B1619009252FA /* Services */,
 				D1B4B327245B0E4C009252FA /* Models */,
-				D1A726FB245AD2F200BDEA19 /* Views */,
 				D1A726FC245AD2FB00BDEA19 /* Controllers */,
+				D1A726FB245AD2F200BDEA19 /* Views */,
 				D1A726FF245AD32700BDEA19 /* Resourses */,
 				D1A726FD245AD30B00BDEA19 /* Extensions */,
 			);
@@ -191,7 +194,7 @@
 			);
 			name = namazPlace;
 			productName = namazPlace;
-			productReference = D1EDC49A245A89E10090DF58 /* namazPlace.app */;
+			productReference = D1EDC49A245A89E10090DF58 /* SajdaPlace.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -312,6 +315,7 @@
 				D1C343C4245DBE75008BE4D4 /* PlaceCashed.swift in Sources */,
 				D1B4B329245B0E5D009252FA /* Place.swift in Sources */,
 				D1BE5272246089FD0096EC41 /* FirebaseService.swift in Sources */,
+				D1D32F58246199CF00CDDE8E /* DescriptionView.swift in Sources */,
 				D1EDC4B8245A96A70090DF58 /* Extension+UIView.swift in Sources */,
 				D1EDC4B6245A8F690090DF58 /* PlaceView.swift in Sources */,
 				D1B4B32C245B1637009252FA /* YandexGeocoderService.swift in Sources */,
@@ -469,7 +473,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Zhassulan-Aimukhambetov.namazPlace";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SajdaPlace;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -491,7 +495,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Zhassulan-Aimukhambetov.namazPlace";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SajdaPlace;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

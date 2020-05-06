@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1EDC499245A89E10090DF58"
-               BuildableName = "namazPlace.app"
+               BuildableName = "SajdaPlace.app"
                BlueprintName = "namazPlace"
                ReferencedContainer = "container:namazPlace.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1EDC499245A89E10090DF58"
-            BuildableName = "namazPlace.app"
+            BuildableName = "SajdaPlace.app"
             BlueprintName = "namazPlace"
             ReferencedContainer = "container:namazPlace.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1EDC499245A89E10090DF58"
-            BuildableName = "namazPlace.app"
+            BuildableName = "SajdaPlace.app"
             BlueprintName = "namazPlace"
             ReferencedContainer = "container:namazPlace.xcodeproj">
          </BuildableReference>
